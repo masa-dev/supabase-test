@@ -40,4 +40,4 @@ jobs:
           --region asia-northeast1 \
           --allow-unauthenticated \
           --cpu-boost \
-          --set-env-vars ConnectionStrings:DefaultConnection='${{ secrets.DOTNET_DEFAULT_CONNECTION }}'
+          --set-env-vars="ConnectionStrings:DefaultConnection"="${{ secrets.DOTNET_DEFAULT_CONNECTION }}"
