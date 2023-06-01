@@ -35,10 +35,10 @@ jobs:
         run: gcloud builds submit ./ --config cloudbuild.yml
 
       - name: Deploy to Cloud Run
-        run: |
-          gcloud beta run deploy dotnet-test-api \
-          --image gcr.io/masahiko-project/supabasetest \
-          --region asia-northeast1 \
-          --allow-unauthenticated \
-          --cpu-boost \
+        run: >
+          gcloud beta run deploy dotnet-test-api
+          --image gcr.io/masahiko-project/supabasetest
+          --region asia-northeast1
+          --allow-unauthenticated
+          --cpu-boost
           --set-env-vars="ConnectionStrings:DefaultConnection"="${{ secrets.DOTNET_DEFAULT_CONNECTION }}"
