@@ -1,19 +1,6 @@
-# steps:
-#   # Build the container image
-# - name: 'gcr.io/cloud-builders/docker'
-#   args: ['build', '-t', 'gcr.io/masahiko-project/dotnet-test-api', '-f', 'CloudRun.Dockerfile', '.']
-# images:
-# - 'gcr.io/masahiko-project/dotnet-test-api'
 steps:
 # Build the container image
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/masahiko-project/supabase-test', '-f', 'CloudRun.Dockerfile', '.']
-# Push the container image to Container Registry
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/masahiko-project/supabase-test']
-# Deploy container image to Cloud Run
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  entrypoint: gcloud
-  args: ['beta', 'run', 'deploy', 'supabase-test-service', '--image', 'gcr.io/masahiko-project/supabase-test', '--region', 'asia-northeast1', '--allow-unauthenticated', '--cpu-boost']
+  args: ['build', '-t', 'gcr.io/masahiko-project/supabase-test', '-f', 'Dockerfile.CloudRun', '.']
 images:
 - gcr.io/masahiko-project/supabase-test
