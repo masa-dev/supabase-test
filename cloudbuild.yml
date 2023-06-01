@@ -4,3 +4,5 @@ steps:
   args: ['build', '-t', 'gcr.io/masahiko-project/supabasetest', '-f', 'Dockerfile.CloudRun', '.']
 images:
 - gcr.io/masahiko-project/supabasetest
+options:
+  logging: CLOUD_LOGGING_ONLY
