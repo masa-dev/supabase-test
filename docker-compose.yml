@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+  supabase_web:
+    container_name: "supabase_web"
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "50001:8080"
+    working_dir: /app/
+    tty: true
+    volumes:
+      - ./src/:/app/
+
+  supabase_db:
+    container_name: "supabase_db"
+    image: postgres:13-bullseye
+    ports:
+      - "55432:5432"
+    volumes:
+      - .dbstore:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=A9AbbsJiNXUA
