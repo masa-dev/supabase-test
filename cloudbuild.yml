@@ -1,6 +1,6 @@
 steps:
 # Build the container image
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/masahiko-project/supabase-test', '-f', 'Dockerfile.CloudRun', '.']
+  args: ['build', '-t', 'gcr.io/masahiko-project/supabasetest', '-f', 'Dockerfile.CloudRun', '.']
 images:
-- gcr.io/masahiko-project/supabase-test
+- gcr.io/masahiko-project/supabasetest
