@@ -14,20 +14,6 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddSession(options => 
-{
-  options.Cookie.HttpOnly = true;
-  options.Cookie.IsEssential = true;
-})
-.AddDistributedPostgreSqlCache(options =>
-{
-  options.ConnectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-  options.SchemaName = "public";
-  options.TableName = "AspNetSession";
-  
-  options.ExpiredItemsDeletionInterval = TimeSpan.FromMinutes(30);
-});
-
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
